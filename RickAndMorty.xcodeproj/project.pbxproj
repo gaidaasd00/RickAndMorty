@@ -30,6 +30,8 @@
 		CCEF0181295E03C900247A80 /* CharacterListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCEF0180295E03C900247A80 /* CharacterListViewModel.swift */; };
 		CCEF0185295E04CC00247A80 /* CharacterListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCEF0184295E04CC00247A80 /* CharacterListView.swift */; };
 		CCEF0187295E18BE00247A80 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCEF0186295E18BE00247A80 /* Extensions.swift */; };
+		CCEF0189295E20C300247A80 /* CharacterCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCEF0188295E20C300247A80 /* CharacterCollectionViewCell.swift */; };
+		CCEF018B295E21CD00247A80 /* CharacterCollectionViewCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCEF018A295E21CD00247A80 /* CharacterCollectionViewCellViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -58,6 +60,8 @@
 		CCEF0180295E03C900247A80 /* CharacterListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterListViewModel.swift; sourceTree = "<group>"; };
 		CCEF0184295E04CC00247A80 /* CharacterListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterListView.swift; sourceTree = "<group>"; };
 		CCEF0186295E18BE00247A80 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		CCEF0188295E20C300247A80 /* CharacterCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterCollectionViewCell.swift; sourceTree = "<group>"; };
+		CCEF018A295E21CD00247A80 /* CharacterCollectionViewCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterCollectionViewCellViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -145,6 +149,7 @@
 			isa = PBXGroup;
 			children = (
 				CCEF0184295E04CC00247A80 /* CharacterListView.swift */,
+				CCEF0188295E20C300247A80 /* CharacterCollectionViewCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -153,6 +158,7 @@
 			isa = PBXGroup;
 			children = (
 				CCEF0180295E03C900247A80 /* CharacterListViewModel.swift */,
+				CCEF018A295E21CD00247A80 /* CharacterCollectionViewCellViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -278,6 +284,7 @@
 			files = (
 				CC8BB1AE29574C71005AA5E8 /* RMLocationViewController.swift in Sources */,
 				CC6BA7AF295D7F7A00AE0DF2 /* CharacterStatus.swift in Sources */,
+				CCEF018B295E21CD00247A80 /* CharacterCollectionViewCellViewModel.swift in Sources */,
 				CCEF0185295E04CC00247A80 /* CharacterListView.swift in Sources */,
 				CCE5B90629576A59008A6E1C /* Request.swift in Sources */,
 				CC8BB18D2957468F005AA5E8 /* RMTabBarController.swift in Sources */,
@@ -296,6 +303,7 @@
 				CC6BA7B1295D80AC00AE0DF2 /* CharacterGender.swift in Sources */,
 				CC6BA7AB295D7DC900AE0DF2 /* Origin.swift in Sources */,
 				CC6BA7AD295D7EA600AE0DF2 /* SingleLocation.swift in Sources */,
+				CCEF0189295E20C300247A80 /* CharacterCollectionViewCell.swift in Sources */,
 				CCEF0181295E03C900247A80 /* CharacterListViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
