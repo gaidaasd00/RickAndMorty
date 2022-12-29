@@ -18,7 +18,7 @@ final class Request {
     private let endpoint: Endpoint
     
     /// Path components for API, if any
-    private let pathComponents: Set<String>
+    private let pathComponents: [String]
     
     /// Quere argument for API, if any
     private let quereParameters: [URLQueryItem]
@@ -60,11 +60,15 @@ final class Request {
     ///   - quereParameters: Collection of query parameters
     public init(
         endpoint: Endpoint,
-        pathComponents: Set<String> = [],
+        pathComponents: [String] = [],
         quereParameters: [URLQueryItem] = []
     ) {
         self.endpoint = endpoint
         self.pathComponents = pathComponents
         self.quereParameters = quereParameters
     }
+}
+
+extension Request {
+    static let listCharacterRequest = Request(endpoint: .character)
 }

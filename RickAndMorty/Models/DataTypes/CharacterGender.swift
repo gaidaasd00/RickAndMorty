@@ -11,5 +11,5 @@ enum CharacterGender: String, Codable {
     case male = "Male"
     case female = "Female"
     case genderless = "Genderless"
-    case unknown = "Unknown"
+    case unknown = "unknown"
 }
