@@ -38,6 +38,7 @@ final class CharacterListView: UIView {
         addSubview(collectionView, spinner)
         addConstraints()
         spinner.startAnimating()
+        viewModel.delegate = self
         viewModel.fetchCharacter()
         setupCollectionView()
     }
@@ -56,20 +57,22 @@ final class CharacterListView: UIView {
             collectionView.leftAnchor.constraint(equalTo: leftAnchor),
             collectionView.rightAnchor.constraint(equalTo: rightAnchor),
             collectionView.bottomAnchor.constraint(equalTo: bottomAnchor)
-        
+            
         ])
     }
     private func setupCollectionView() {
         collectionView.delegate = viewModel
         collectionView.dataSource = viewModel
-        
-        DispatchQueue.main.asyncAfter(deadline: .now()+2, execute: { [unowned self] in
-            spinner.stopAnimating()
-            collectionView.isHidden = false
-            UIView.animate(withDuration: 0.4) { [unowned self] in
-                collectionView.alpha = 1
-            }
-            
-        })
+    }
+}
+
+extension CharacterListView: CharacterListViewModelDelegate {
+    func didInitialCharacter() {
+        spinner.stopAnimating()
+        collectionView.isHidden = false
+        collectionView.reloadData()
+        UIView.animate(withDuration: 0.4) { [unowned self] in
+            collectionView.alpha = 1
+        }
     }
 }
