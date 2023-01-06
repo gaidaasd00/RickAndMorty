@@ -5,9 +5,18 @@
 //  Created by Alexey Gaidykov on 29.12.2022.
 //
 
+protocol CharacterListViewDelegate: AnyObject {
+    func rmCharacterListView(
+        _ characterListView: CharacterListView,
+        didSelectCharacter character: Character
+    )
+}
+
 import UIKit
 
 final class CharacterListView: UIView {
+    
+    weak var delegate: CharacterListViewDelegate?
     
     private let viewModel = CharacterListViewModel()
     private let spinner: UIActivityIndicatorView = {
@@ -20,7 +29,7 @@ final class CharacterListView: UIView {
     private let collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .vertical
-        layout.sectionInset = UIEdgeInsets(top: 0, left: 10, bottom: 0, right: 10)
+        layout.sectionInset = UIEdgeInsets(top: 0, left: 10, bottom: 10, right: 10)
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collectionView.isHidden = true
         collectionView.alpha = 0
@@ -67,6 +76,10 @@ final class CharacterListView: UIView {
 }
 
 extension CharacterListView: CharacterListViewModelDelegate {
+    func didSelectCharacter(_ character: Character) {
+        delegate?.rmCharacterListView(self, didSelectCharacter: character)
+    }
+    
     func didInitialCharacter() {
         spinner.stopAnimating()
         collectionView.isHidden = false

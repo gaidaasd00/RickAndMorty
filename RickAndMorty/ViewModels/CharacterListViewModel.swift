@@ -7,10 +7,12 @@
 
 protocol CharacterListViewModelDelegate: AnyObject {
     func didInitialCharacter()
+    func didSelectCharacter(_ character: Character)
 }
 
 import UIKit
 
+/// View Model to handle character list view logic
 final class CharacterListViewModel: NSObject {
     weak var delegate: CharacterListViewModelDelegate?
     
@@ -28,6 +30,9 @@ final class CharacterListViewModel: NSObject {
     }
     private var cellViewModel: [CharacterCollectionViewCellViewModel] = []
     
+    private var apiInfo: GetCharacterResponse.Info? = nil
+    
+    /// Fetch initial set of character(20)
     public func fetchCharacter() {
         Service.shared.execute(
             .listCharacterRequest,
@@ -36,6 +41,8 @@ final class CharacterListViewModel: NSObject {
             switch result {
             case .success(let responseModel):
                 let results = responseModel.results
+                let info = responseModel.info
+                self?.apiInfo = info
                 self?.characters = results
                 DispatchQueue.main.async {
                     self?.delegate?.didInitialCharacter()
@@ -45,8 +52,16 @@ final class CharacterListViewModel: NSObject {
             }
         }
     }
+    /// if additional characters are needed
+    func fetchAdditionalCharacters() {
+        //Fetch characters
+    }
+    var shouldShowLoadMoreIndicator: Bool {
+        return apiInfo?.next != nil
+    }
 }
 
+//MARK: - CollectionView
 extension CharacterListViewModel: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         cellViewModel.count
@@ -66,5 +81,22 @@ extension CharacterListViewModel: UICollectionViewDelegate, UICollectionViewData
         let bounds = UIScreen.main.bounds
         let width = (bounds.width-30)/2
         return CGSize(width: width, height: width * 1.5)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        collectionView.deselectItem(at: indexPath, animated: true)
+        let character = characters[indexPath.row]
+        delegate?.didSelectCharacter(character)
+        
+    }
+}
+
+//MARK: - ScrollView
+extension CharacterListViewModel: UIScrollViewDelegate {
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        guard shouldShowLoadMoreIndicator else {
+            return
+        }
+        
     }
 }
