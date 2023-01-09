@@ -67,8 +67,60 @@ final class Request {
         self.pathComponents = pathComponents
         self.quereParameters = quereParameters
     }
+    /// Attempt to create request
+    /// - Parameter url: URL to parse
+    convenience init?(url: URL) {
+        let string = url.absoluteString
+        if !string.contains(Constants.baseUrl) {
+            return nil
+        }
+        let trimmed = string.replacingOccurrences(of: Constants.baseUrl+"/", with: "")
+        if trimmed.contains("/") {
+            let components = trimmed.components(separatedBy: "/")
+            if !components.isEmpty {
+                let endpointString = components[0] // Endpoint
+                var pathComponents: [String] = []
+                if components.count > 1 {
+                    pathComponents = components
+                    pathComponents.removeFirst()
+                }
+                if let rmEndpoint = Endpoint(
+                    rawValue: endpointString
+                ) {
+                    self.init(endpoint: rmEndpoint, pathComponents: pathComponents)
+                    return
+                }
+            }
+        } else if trimmed.contains("?") {
+            let components = trimmed.components(separatedBy: "?")
+            if !components.isEmpty, components.count >= 2 {
+                let endpointString = components[0]
+                let queryItemsString = components[1]
+                let queryItems: [URLQueryItem] = queryItemsString.components(separatedBy: "&").compactMap({
+                    guard $0.contains("=") else {
+                        return nil
+                    }
+                    let parts = $0.components(separatedBy: "=")
+                    
+                    return URLQueryItem(
+                        name: parts[0],
+                        value: parts[1]
+                    )
+                })
+                
+                if let rmEndpoint = Endpoint(rawValue: endpointString) {
+                    self.init(endpoint: rmEndpoint, quereParameters: queryItems)
+                    return
+                }
+            }
+        }
+        
+        return nil
+    }
 }
 
 extension Request {
-    static let listCharacterRequest = Request(endpoint: .character)
+    static let listCharactersRequests = Request(endpoint: .character)
+    static let listEpisodesRequest = Request(endpoint: .episode)
+    static let listLocationsRequest = Request(endpoint: .location)
 }
