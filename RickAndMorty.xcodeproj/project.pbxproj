@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CC090111296DA1C3000E9892 /* ImageLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC090110296DA1C3000E9892 /* ImageLoader.swift */; };
 		CC129B38295DD24900BD8942 /* GetCharacterResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC129B37295DD24900BD8942 /* GetCharacterResponse.swift */; };
 		CC6BA7AB295D7DC900AE0DF2 /* Origin.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC6BA7AA295D7DC900AE0DF2 /* Origin.swift */; };
 		CC6BA7AD295D7EA600AE0DF2 /* SingleLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC6BA7AC295D7EA600AE0DF2 /* SingleLocation.swift */; };
@@ -39,6 +40,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		CC090110296DA1C3000E9892 /* ImageLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageLoader.swift; sourceTree = "<group>"; };
 		CC129B37295DD24900BD8942 /* GetCharacterResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetCharacterResponse.swift; sourceTree = "<group>"; };
 		CC6BA7AA295D7DC900AE0DF2 /* Origin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Origin.swift; sourceTree = "<group>"; };
 		CC6BA7AC295D7EA600AE0DF2 /* SingleLocation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleLocation.swift; sourceTree = "<group>"; };
@@ -196,6 +198,7 @@
 		CC8BB1A129574AA8005AA5E8 /* Managers */ = {
 			isa = PBXGroup;
 			children = (
+				CC090110296DA1C3000E9892 /* ImageLoader.swift */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -316,6 +319,7 @@
 				CC88D6642968D16D003CF3E0 /* CharacterDetailViewModel.swift in Sources */,
 				CC8BB1A729574B90005AA5E8 /* Character.swift in Sources */,
 				CC8BB1B229574CAC005AA5E8 /* RMSettingsViewController.swift in Sources */,
+				CC090111296DA1C3000E9892 /* ImageLoader.swift in Sources */,
 				CC88D6602968D04F003CF3E0 /* CharacterDetailViewController.swift in Sources */,
 				CC8BB1A529574B7C005AA5E8 /* Location.swift in Sources */,
 				CCEF0187295E18BE00247A80 /* Extensions.swift in Sources */,
