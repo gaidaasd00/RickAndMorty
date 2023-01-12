@@ -9,7 +9,8 @@ import UIKit
 //single character info
 final class CharacterDetailView: UIView {
     
-    private var collectionView: UICollectionView?
+    var collectionView: UICollectionView?
+    private let viewModel: CharacterDetailViewModel
     
     private let spinner: UIActivityIndicatorView = {
         let spinner = UIActivityIndicatorView(style: .large)
@@ -18,12 +19,13 @@ final class CharacterDetailView: UIView {
         return spinner
     }()
     
-
+    
     //MARK: Init
-    override init(frame: CGRect) {
+    init(frame: CGRect, viewModel: CharacterDetailViewModel) {
+        self.viewModel = viewModel
         super.init(frame: frame)
         translatesAutoresizingMaskIntoConstraints = false
-        backgroundColor = .systemPurple
+        backgroundColor = .systemBackground
         let collectionView = createCollectionView()
         self.collectionView = collectionView
         addSubview(collectionView, spinner)
@@ -34,6 +36,8 @@ final class CharacterDetailView: UIView {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
+    //MARK: - Private function
     private  func addConstrains() {
         guard let collectionView = collectionView else { return }
         NSLayoutConstraint.activate([
@@ -46,7 +50,7 @@ final class CharacterDetailView: UIView {
             collectionView.leftAnchor.constraint(equalTo: leftAnchor),
             collectionView.rightAnchor.constraint(equalTo: rightAnchor),
             collectionView.bottomAnchor.constraint(equalTo: bottomAnchor)
-        
+            
         ])
     }
     
@@ -55,10 +59,25 @@ final class CharacterDetailView: UIView {
             return self.createSection(for: sectionIndex)
         }
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
-        collectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "cell")
+        //register Cells
+        collectionView.register(CharacterPhotoCollectionViewCell.self, forCellWithReuseIdentifier:CharacterPhotoCollectionViewCell.id)
+        collectionView.register(CharacterInfoCollectionViewCell.self, forCellWithReuseIdentifier:CharacterInfoCollectionViewCell.id)
+        collectionView.register(CharacterEpisodeCollectionViewCell.self, forCellWithReuseIdentifier:CharacterEpisodeCollectionViewCell.id)
+        
+        collectionView.translatesAutoresizingMaskIntoConstraints = false
         return collectionView
     }
+    
     private func createSection(for sectionIndex: Int) -> NSCollectionLayoutSection {
-        
+        let sectionTypes = viewModel.sections
+        switch sectionTypes[sectionIndex] {
+        case .photo:
+            return viewModel.createPhotoSectionLayout()
+        case .information:
+            return viewModel.createInfoSectionLayout()
+        case .episodes:
+            return viewModel.createEpisodeSectionLayout()
+        }
     }
 }
+
