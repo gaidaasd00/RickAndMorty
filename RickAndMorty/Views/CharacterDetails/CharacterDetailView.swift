@@ -28,7 +28,7 @@ final class CharacterDetailView: UIView {
         backgroundColor = .systemBackground
         let collectionView = createCollectionView()
         self.collectionView = collectionView
-        addSubview(collectionView, spinner)
+        addSubviews(collectionView, spinner)
         addConstrains()
         
     }

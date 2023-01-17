@@ -41,7 +41,7 @@ final class CharacterCollectionViewCell: UICollectionViewCell {
     override init(frame: CGRect) {
         super.init(frame: frame)
         contentView.backgroundColor = .secondarySystemBackground
-        contentView.addSubview(imageView, nameLabel, statusLabel)
+        contentView.addSubviews(imageView, nameLabel, statusLabel)
         addConstraints()
         setupLayer()
     }

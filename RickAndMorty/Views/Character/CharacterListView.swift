@@ -46,7 +46,7 @@ final class CharacterListView: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         translatesAutoresizingMaskIntoConstraints = false
-        addSubview(collectionView, spinner)
+        addSubviews(collectionView, spinner)
         addConstraints()
         spinner.startAnimating()
         viewModel.delegate = self
