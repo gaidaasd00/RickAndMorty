@@ -106,4 +106,17 @@ extension CharacterDetailViewController: UICollectionViewDelegate, UICollectionV
             return cell
         }
     }
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let sectionType = viewModel.sections[indexPath.section]
+        switch sectionType {
+        case .photo, .information:
+            break
+        case .episodes(viewModels: let viewModels):
+            let episodes = self.viewModel.episode
+            let selection = episodes[indexPath.row]
+            let vc = EpisodeDetailViewController(url: URL(string: selection))
+            navigationController?.pushViewController(vc, animated: true)
+        }
+    }
 }
+
