@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct GetCharacterResponse: Codable {
+struct GetAllCharacterResponse: Codable {
     struct Info: Codable {
         let count: Int
         let pages: Int
