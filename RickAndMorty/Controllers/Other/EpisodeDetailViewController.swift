@@ -10,6 +10,7 @@ import UIKit
 /// VC to show details about single episode
 final class EpisodeDetailViewController: UIViewController {
     private let viewModel: EpisodeDetailViewViewModel
+    private let detailView = EpisodeDetailView()
     
     
     
@@ -26,7 +27,17 @@ final class EpisodeDetailViewController: UIViewController {
     //MARK: - Lifecycle 
     override func viewDidLoad() {
         super.viewDidLoad()
+        view.addSubview(detailView)
+        setConstraint()
         title = "Episode"
-        view.backgroundColor = .systemGray
+    }
+    
+    private func setConstraint() {
+        NSLayoutConstraint.activate([
+            detailView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            detailView.leftAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leftAnchor),
+            detailView.rightAnchor.constraint(equalTo: view.safeAreaLayoutGuide.rightAnchor),
+            detailView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
+        ])
     }
 }

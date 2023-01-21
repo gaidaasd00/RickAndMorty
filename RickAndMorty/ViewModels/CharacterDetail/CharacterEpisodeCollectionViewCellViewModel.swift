@@ -11,7 +11,7 @@ protocol EpisodeDataRender {
     var episode: String { get }
 }
 
-import Foundation
+import UIKit
 
 final class CharacterEpisodeCollectionViewCellViewModel: Hashable, Equatable {
     
@@ -26,14 +26,16 @@ final class CharacterEpisodeCollectionViewCellViewModel: Hashable, Equatable {
         }
     }
     
+    let borderColor: UIColor
+    
     
     //MARK: - Init
-    init(episodeDataUrl: URL?) {
+    init(episodeDataUrl: URL?, borderColor: UIColor = .systemBlue) {
         self.episodeDataUrl = episodeDataUrl
+        self.borderColor = borderColor
     }
     
     //MARK: - Public
-    
     func registerForData(_ block: @escaping (EpisodeDataRender  ) -> Void) {
         self.dataBlock = block
     }
