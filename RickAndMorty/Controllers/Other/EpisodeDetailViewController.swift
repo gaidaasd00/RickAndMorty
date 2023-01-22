@@ -30,6 +30,15 @@ final class EpisodeDetailViewController: UIViewController {
         view.addSubview(detailView)
         setConstraint()
         title = "Episode"
+        navigationItem.rightBarButtonItem = UIBarButtonItem(
+            barButtonSystemItem: .action,
+            target: self
+            , action: #selector(didTapShared)
+        )
+    }
+    
+    @objc func didTapShared() {
+        
     }
     
     private func setConstraint() {

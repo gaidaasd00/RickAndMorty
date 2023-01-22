@@ -42,6 +42,7 @@
 		CC939C08297AF14500898566 /* EpisodeListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC939C07297AF14500898566 /* EpisodeListView.swift */; };
 		CC939C0A297AF62A00898566 /* EpisodeListViewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC939C09297AF62A00898566 /* EpisodeListViewViewModel.swift */; };
 		CC939C0C297AFB1000898566 /* GetAllEpisodesResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC939C0B297AFB1000898566 /* GetAllEpisodesResponse.swift */; };
+		CCC1FDDA297D9324000EB9EC /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCC1FDD9297D9324000EB9EC /* SearchViewController.swift */; };
 		CCE5B90429576A45008A6E1C /* Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCE5B90329576A45008A6E1C /* Service.swift */; };
 		CCE5B90629576A59008A6E1C /* Request.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCE5B90529576A59008A6E1C /* Request.swift */; };
 		CCE5B90829576B44008A6E1C /* Endpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCE5B90729576B44008A6E1C /* Endpoint.swift */; };
@@ -90,6 +91,7 @@
 		CC939C07297AF14500898566 /* EpisodeListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EpisodeListView.swift; sourceTree = "<group>"; };
 		CC939C09297AF62A00898566 /* EpisodeListViewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EpisodeListViewViewModel.swift; sourceTree = "<group>"; };
 		CC939C0B297AFB1000898566 /* GetAllEpisodesResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetAllEpisodesResponse.swift; sourceTree = "<group>"; };
+		CCC1FDD9297D9324000EB9EC /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		CCE5B90329576A45008A6E1C /* Service.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Service.swift; sourceTree = "<group>"; };
 		CCE5B90529576A59008A6E1C /* Request.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Request.swift; sourceTree = "<group>"; };
 		CCE5B90729576B44008A6E1C /* Endpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Endpoint.swift; sourceTree = "<group>"; };
@@ -170,6 +172,7 @@
 			children = (
 				CC88D65F2968D04F003CF3E0 /* CharacterDetailViewController.swift */,
 				CC939BFE297AE21D00898566 /* EpisodeDetailViewController.swift */,
+				CCC1FDD9297D9324000EB9EC /* SearchViewController.swift */,
 			);
 			path = Other;
 			sourceTree = "<group>";
@@ -412,6 +415,7 @@
 				CC88D6622968D140003CF3E0 /* CharacterDetailView.swift in Sources */,
 				CC5920072970603300C0A349 /* CharacterEpisodeCollectionViewCellViewModel.swift in Sources */,
 				CC939BFF297AE21D00898566 /* EpisodeDetailViewController.swift in Sources */,
+				CCC1FDDA297D9324000EB9EC /* SearchViewController.swift in Sources */,
 				CC6BA7AB295D7DC900AE0DF2 /* Origin.swift in Sources */,
 				CC6BA7AD295D7EA600AE0DF2 /* SingleLocation.swift in Sources */,
 				CC939C0A297AF62A00898566 /* EpisodeListViewViewModel.swift in Sources */,
