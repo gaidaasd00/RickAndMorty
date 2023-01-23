@@ -59,8 +59,8 @@ final class CharacterDetailViewModel {
     public func createPhotoSectionLayout() -> NSCollectionLayoutSection {
         let item = NSCollectionLayoutItem(
             layoutSize: NSCollectionLayoutSize(
-                widthDimension: .fractionalWidth(1.0),
-                heightDimension: .fractionalHeight(1.0)
+                widthDimension: .fractionalWidth(1),
+                heightDimension: .fractionalHeight(1)
             )
         )
         item.contentInsets = NSDirectionalEdgeInsets(
@@ -72,7 +72,7 @@ final class CharacterDetailViewModel {
         
         let group = NSCollectionLayoutGroup.vertical(
             layoutSize:  NSCollectionLayoutSize(
-                widthDimension: .fractionalWidth(1.0),
+                widthDimension: .fractionalWidth(1),
                 heightDimension: .fractionalHeight(0.5)
             ),
             subitems: [item]
@@ -85,7 +85,7 @@ final class CharacterDetailViewModel {
         let item = NSCollectionLayoutItem(
             layoutSize: NSCollectionLayoutSize(
                 widthDimension: .fractionalWidth(0.5),
-                heightDimension: .fractionalHeight(1.0)
+                heightDimension: .fractionalHeight(1)
             )
         )
         item.contentInsets = NSDirectionalEdgeInsets(
@@ -97,7 +97,7 @@ final class CharacterDetailViewModel {
         
         let group = NSCollectionLayoutGroup.horizontal(
             layoutSize:  NSCollectionLayoutSize(
-                widthDimension: .fractionalWidth(1.0),
+                widthDimension: .fractionalWidth(1),
                 heightDimension: .absolute(150)
             ),
             subitems: [item, item]
@@ -109,8 +109,8 @@ final class CharacterDetailViewModel {
     public func createEpisodeSectionLayout() -> NSCollectionLayoutSection {
         let item = NSCollectionLayoutItem(
             layoutSize: NSCollectionLayoutSize(
-                widthDimension: .fractionalWidth(1.0),
-                heightDimension: .fractionalHeight(1.0)
+                widthDimension: .fractionalWidth(1),
+                heightDimension: .fractionalHeight(1)
             )
         )
         item.contentInsets = NSDirectionalEdgeInsets(
