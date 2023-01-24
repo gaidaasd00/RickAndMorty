@@ -68,7 +68,10 @@ final class CharacterListViewModel: NSObject {
             return
         }
         
-        Service.shared.execute(request, expecting: GetAllCharacterResponse.self) { [weak self] result in
+        Service.shared.execute(
+            request,
+            expecting: GetAllCharacterResponse.self
+        ) { [weak self] result in
             guard let strongSelf = self else {
                 return
             }
@@ -82,7 +85,9 @@ final class CharacterListViewModel: NSObject {
                 let newCount = moreResults.count
                 let total = originalCount+newCount
                 let startingIndex = total - newCount
-                let indexPathsToAdd: [IndexPath] = Array(startingIndex..<(startingIndex+newCount)).compactMap({
+                let indexPathsToAdd: [IndexPath] = Array(
+                    startingIndex..<(startingIndex+newCount)
+                ).compactMap({
                     return IndexPath(row: $0, section: 0)
                 })
                 strongSelf.characters.append(contentsOf: moreResults)
@@ -111,7 +116,10 @@ extension CharacterListViewModel: UICollectionViewDelegate, UICollectionViewData
         cellViewModel.count
     }
     
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+    func collectionView(
+        _ collectionView: UICollectionView,
+        cellForItemAt indexPath: IndexPath
+    ) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(
             withReuseIdentifier: CharacterCollectionViewCell.cellId,
             for: indexPath) as? CharacterCollectionViewCell else {
@@ -121,7 +129,11 @@ extension CharacterListViewModel: UICollectionViewDelegate, UICollectionViewData
         return cell
     }
     
-    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+    func collectionView(
+        _ collectionView: UICollectionView,
+        viewForSupplementaryElementOfKind kind: String,
+        at indexPath: IndexPath
+    ) -> UICollectionReusableView {
         guard kind == UICollectionView.elementKindSectionFooter,
               let footer = collectionView.dequeueReusableSupplementaryView(
                 ofKind: kind,
@@ -134,18 +146,29 @@ extension CharacterListViewModel: UICollectionViewDelegate, UICollectionViewData
         return footer
     }
     
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForFooterInSection section: Int) -> CGSize {
+    func collectionView(
+        _ collectionView: UICollectionView,
+        layout collectionViewLayout: UICollectionViewLayout,
+        referenceSizeForFooterInSection section: Int
+    ) -> CGSize {
         guard shouldShowLoadMoreIndicator else {return.zero}
         return CGSize(width: collectionView.frame.width, height: 100)
     }
     
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+    func collectionView(
+        _ collectionView: UICollectionView,
+        layout collectionViewLayout: UICollectionViewLayout,
+        sizeForItemAt indexPath: IndexPath
+    ) -> CGSize {
         let bounds = UIScreen.main.bounds
         let width = (bounds.width-30)/2
         return CGSize(width: width, height: width * 1.5)
     }
     
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+    func collectionView(
+        _ collectionView: UICollectionView,
+        didSelectItemAt indexPath: IndexPath
+    ) {
         collectionView.deselectItem(at: indexPath, animated: true)
         let character = characters[indexPath.row]
         delegate?.didSelectCharacter(character)
