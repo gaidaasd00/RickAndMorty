@@ -48,6 +48,8 @@
 		CC939C08297AF14500898566 /* EpisodeListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC939C07297AF14500898566 /* EpisodeListView.swift */; };
 		CC939C0A297AF62A00898566 /* EpisodeListViewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC939C09297AF62A00898566 /* EpisodeListViewViewModel.swift */; };
 		CC939C0C297AFB1000898566 /* GetAllEpisodesResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC939C0B297AFB1000898566 /* GetAllEpisodesResponse.swift */; };
+		CCBD70592982DA1E00EFF16D /* LocationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCBD70582982DA1E00EFF16D /* LocationView.swift */; };
+		CCBD705B2982DE8100EFF16D /* LocationViewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCBD705A2982DE8100EFF16D /* LocationViewViewModel.swift */; };
 		CCC1FDDA297D9324000EB9EC /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCC1FDD9297D9324000EB9EC /* SearchViewController.swift */; };
 		CCE5B90429576A45008A6E1C /* Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCE5B90329576A45008A6E1C /* Service.swift */; };
 		CCE5B90629576A59008A6E1C /* Request.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCE5B90529576A59008A6E1C /* Request.swift */; };
@@ -103,6 +105,8 @@
 		CC939C07297AF14500898566 /* EpisodeListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EpisodeListView.swift; sourceTree = "<group>"; };
 		CC939C09297AF62A00898566 /* EpisodeListViewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EpisodeListViewViewModel.swift; sourceTree = "<group>"; };
 		CC939C0B297AFB1000898566 /* GetAllEpisodesResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetAllEpisodesResponse.swift; sourceTree = "<group>"; };
+		CCBD70582982DA1E00EFF16D /* LocationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationView.swift; sourceTree = "<group>"; };
+		CCBD705A2982DE8100EFF16D /* LocationViewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationViewViewModel.swift; sourceTree = "<group>"; };
 		CCC1FDD9297D9324000EB9EC /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		CCE5B90329576A45008A6E1C /* Service.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Service.swift; sourceTree = "<group>"; };
 		CCE5B90529576A59008A6E1C /* Request.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Request.swift; sourceTree = "<group>"; };
@@ -277,6 +281,7 @@
 		CC8BB19E29574A5B005AA5E8 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				CCBD70572982D9FF00EFF16D /* Location */,
 				CC4BCA66298016C800A1D896 /* SwiftUI */,
 				CC25641B297ECE1F003530F4 /* EpisodeDitails */,
 				CC939C06297AF12400898566 /* Episode */,
@@ -296,6 +301,7 @@
 				CCEF0180295E03C900247A80 /* CharacterListViewModel.swift */,
 				CCEF018A295E21CD00247A80 /* CharacterCollectionViewCellViewModel.swift */,
 				CC939C09297AF62A00898566 /* EpisodeListViewViewModel.swift */,
+				CCBD705A2982DE8100EFF16D /* LocationViewViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -357,6 +363,14 @@
 				CC939C07297AF14500898566 /* EpisodeListView.swift */,
 			);
 			path = Episode;
+			sourceTree = "<group>";
+		};
+		CCBD70572982D9FF00EFF16D /* Location */ = {
+			isa = PBXGroup;
+			children = (
+				CCBD70582982DA1E00EFF16D /* LocationView.swift */,
+			);
+			path = Location;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -461,11 +475,13 @@
 				CCEF0187295E18BE00247A80 /* Extensions.swift in Sources */,
 				CCE5B90429576A45008A6E1C /* Service.swift in Sources */,
 				CC8BB18B2957468F005AA5E8 /* SceneDelegate.swift in Sources */,
+				CCBD70592982DA1E00EFF16D /* LocationView.swift in Sources */,
 				CC86200B296B01EE008BD4FF /* FooterLoadingCollectionReusableView.swift in Sources */,
 				CC939C03297AEE7100898566 /* EpisodeDetailViewViewModel.swift in Sources */,
 				CC8BB1AC29574C5A005AA5E8 /* RMCharacterViewController.swift in Sources */,
 				CC6BA7B1295D80AC00AE0DF2 /* CharacterGender.swift in Sources */,
 				CC88D6622968D140003CF3E0 /* CharacterDetailView.swift in Sources */,
+				CCBD705B2982DE8100EFF16D /* LocationViewViewModel.swift in Sources */,
 				CC5920072970603300C0A349 /* CharacterEpisodeCollectionViewCellViewModel.swift in Sources */,
 				CC939BFF297AE21D00898566 /* EpisodeDetailViewController.swift in Sources */,
 				CC4BCA6529800FE800A1D896 /* SettingsOption.swift in Sources */,
