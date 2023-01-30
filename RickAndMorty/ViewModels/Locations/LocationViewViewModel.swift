@@ -33,6 +33,11 @@ final class LocationViewViewModel {
     
     init() {}
     
+    func location(at index: Int) -> Location? {
+        guard index < locations.count, index >= 0 else { return nil }
+        return self.locations[index]
+    }
+    
     func fetchLocations() {
         Service.shared.execute(
             .listLocationsRequest,

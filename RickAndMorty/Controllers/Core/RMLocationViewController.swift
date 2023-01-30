@@ -9,13 +9,13 @@ import UIKit
 
 /// Controller to show and search for locations
 final class RMLocationViewController: UIViewController, LocationViewViewModelDelegate {
-
     private let primaryView = LocationView()
     private let viewModel = LocationViewViewModel()
     
     //MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        primaryView.delegate = self
         view.addSubview(primaryView)
         view.backgroundColor = .systemBackground
         title = "Locations"
@@ -50,5 +50,15 @@ final class RMLocationViewController: UIViewController, LocationViewViewModelDel
     //MARK: - LocationViewModel Delegate
     func didFetchInitialLocations() {
         primaryView.configure(with: viewModel)
+    }
+}
+
+
+//MARK: - LocationViewDelegate
+extension RMLocationViewController: LocationViewDelegate {
+    func locationView(_ locationView: LocationView, didSelect location: Location) {
+        let vc = LocationDetailViewController(location: location)
+        vc.navigationItem.largeTitleDisplayMode = .never
+        navigationController?.pushViewController(vc, animated: true)
     }
 }
