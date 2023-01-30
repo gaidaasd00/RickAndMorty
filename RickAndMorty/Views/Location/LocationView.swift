@@ -8,6 +8,8 @@
 import UIKit
 
 final class LocationView: UIView {
+
+    
     
     private var viewModel: LocationViewViewModel? {
         didSet {
@@ -25,7 +27,7 @@ final class LocationView: UIView {
         table.translatesAutoresizingMaskIntoConstraints = false
         table.alpha = 0
         table.isHidden = true
-        table.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
+        table.register(LocationTableViewCell.self, forCellReuseIdentifier: LocationTableViewCell.id)
         return table
     }()
     
@@ -45,6 +47,7 @@ final class LocationView: UIView {
         addSubviews(tableView, spinner)
         spinner.startAnimating()
         addConstraint()
+        configureTable()
     }
     
     required init?(coder: NSCoder) {
@@ -65,7 +68,38 @@ final class LocationView: UIView {
         ])
     }
     
+    private func configureTable() {
+        tableView.delegate = self
+        tableView.dataSource = self
+    }
+    
     func configure(with viewModel: LocationViewViewModel) {
         self.viewModel = viewModel
+    }
+}
+
+//MARK: - UITableViewDelegate
+extension LocationView: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+    }
+}
+
+//MARK: - UITableViewDataSource
+extension LocationView: UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return viewModel?.cellViewModels.count ?? 0
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let cellViewModels = viewModel?.cellViewModels else { fatalError() }
+        guard let cell = tableView.dequeueReusableCell(
+            withIdentifier: LocationTableViewCell.id,
+            for: indexPath
+        ) as? LocationTableViewCell else { fatalError() }
+    
+        let cellViewModel = cellViewModels[indexPath.row]
+        cell.textLabel?.text = cellViewModel.name
+        return cell
     }
 }
