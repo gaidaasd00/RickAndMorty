@@ -11,18 +11,29 @@ final class SearchView: UIView {
     private let viewModel: SearchViewViewModel
     
     //MARK: - Subviews
+    private let noResultsView = NoSearchResultsView()
     
     //MARK: - Init
     init(frame: CGRect, viewModel: SearchViewViewModel) {
         self.viewModel = viewModel
         super.init(frame: frame)
-        backgroundColor = .red
+        backgroundColor = .systemBackground
         translatesAutoresizingMaskIntoConstraints = false
-        
+        addSubviews(noResultsView)
+        addConstraints()
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    private func addConstraints() {
+        NSLayoutConstraint.activate([
+            noResultsView.widthAnchor.constraint(equalToConstant: 150),
+            noResultsView.heightAnchor.constraint(equalToConstant: 150),
+            noResultsView.centerXAnchor.constraint(equalTo: centerXAnchor),
+            noResultsView.centerYAnchor.constraint(equalTo: centerYAnchor),
+        ])
     }
 }
     //MARK: - CollectionViewDelegate

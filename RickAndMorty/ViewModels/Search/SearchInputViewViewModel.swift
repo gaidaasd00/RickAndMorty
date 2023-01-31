@@ -8,5 +8,5 @@
 import Foundation
 
 final class SearchInputViewViewModel {
-    init() {}
+    init() {}   
 }
