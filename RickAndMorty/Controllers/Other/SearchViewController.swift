@@ -58,6 +58,12 @@ class SearchViewController: UIViewController {
             target: self,
             action: #selector(didTapped)
         )
+        searchView.delegate = self
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        searchView.presentKeyboard()
     }
     
     @objc private func didTapped() {
@@ -71,5 +77,11 @@ class SearchViewController: UIViewController {
             searchView.rightAnchor.constraint(equalTo: view.safeAreaLayoutGuide.rightAnchor),
             searchView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
         ])
+    }
+}
+//MARK: - SearchViewDelegate
+extension SearchViewController: SearchViewDelegate {
+    func searchView(_ searchView: SearchView, didSelectOption option: SearchInputViewViewModel.DynamicOption) {
+        print("Should present option picker")
     }
 }
