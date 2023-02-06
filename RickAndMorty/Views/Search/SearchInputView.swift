@@ -32,6 +32,8 @@ final class SearchInputView: UIView {
         }
     }
     
+    private var stackView: UIStackView?
+    
     //MARK: - Init
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -77,6 +79,7 @@ final class SearchInputView: UIView {
     
     private func createOptionsSelectionView(options: [SearchInputViewViewModel.DynamicOption]) {
         let stackView = createOptionStackView()
+        self.stackView = stackView
         for x in 0..<options.count {
             let option = options[x]
             let button = createButton(with: option, tag: x)
@@ -129,5 +132,26 @@ final class SearchInputView: UIView {
     
     func presentKeyboard() {
         searchBar.becomeFirstResponder()  
+    }
+    
+    func update(
+        option: SearchInputViewViewModel.DynamicOption,
+        value: String
+    ) {
+        guard let buttons = stackView?.arrangedSubviews as? [UIButton],
+              let allOptions = viewModel?.options,
+              let index = allOptions.firstIndex(of: option) else { return }
+        
+       
+        buttons[index].setAttributedTitle(
+            NSAttributedString(
+                string: value.uppercased(),
+                attributes: [
+                    .font: UIFont.systemFont(ofSize: 18, weight: .medium),
+                    .foregroundColor: UIColor.link
+                ]
+            ),
+            for: .normal
+        )
     }
 }

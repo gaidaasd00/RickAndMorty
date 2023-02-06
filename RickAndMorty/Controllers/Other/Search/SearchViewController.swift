@@ -67,7 +67,7 @@ class SearchViewController: UIViewController {
     }
     
     @objc private func didTapped() {
-        // viewModel.executeSearch()
+         viewModel.executeSearch()
     }
     
     private func addConstraints() {
@@ -82,6 +82,13 @@ class SearchViewController: UIViewController {
 //MARK: - SearchViewDelegate
 extension SearchViewController: SearchViewDelegate {
     func searchView(_ searchView: SearchView, didSelectOption option: SearchInputViewViewModel.DynamicOption) {
-        print("Should present option picker")
+        let vc = SearchOptionPickerViewController(option: option) { [weak self] selection in
+            DispatchQueue.main.async {
+                self?.viewModel.set(value: selection, for: option)
+            }
+        }
+        vc.sheetPresentationController?.detents = [.medium()]
+        vc.sheetPresentationController?.prefersGrabberVisible = true
+        present(vc, animated: true)
     }
 }
