@@ -10,10 +10,17 @@ protocol SearchInputViewDelegate: AnyObject {
         _ inputView: SearchInputView,
         didSelectOption option: SearchInputViewViewModel.DynamicOption
     )
+    func searchInputView(
+        _ inputView: SearchInputView,
+        didChangeSearchText text: String
+    )
+    
+    func searchInputViewDidTapSearchKeyboardButton(_ inputView: SearchInputView)
 }
 
 import UIKit
 
+/// view for top search bar
 final class SearchInputView: UIView {
     weak var delegate: SearchInputViewDelegate?
     
@@ -40,6 +47,8 @@ final class SearchInputView: UIView {
         translatesAutoresizingMaskIntoConstraints = false
         addSubviews(searchBar)
         addConstraints()
+        
+        searchBar.delegate = self
     }
     
     required init?(coder: NSCoder) {
@@ -155,3 +164,19 @@ final class SearchInputView: UIView {
         )
     }
 }
+
+//MARK: - UISearchBarDelegate
+extension SearchInputView: UISearchBarDelegate {
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        //Notify delegate of change text
+        delegate?.searchInputView(self, didChangeSearchText: searchText)
+    }
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        //Notify that search button was tapped
+        searchBar.resignFirstResponder()
+        delegate?.searchInputViewDidTapSearchKeyboardButton(self)
+    }
+    
+}
+

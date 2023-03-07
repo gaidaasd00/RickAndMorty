@@ -88,4 +88,13 @@ extension SearchView: SearchInputViewDelegate {
     ) {
         delegate?.searchView(self, didSelectOption: option)
     }
+    
+    func searchInputView(_ inputView: SearchInputView, didChangeSearchText text: String) {
+        viewModel.set(query: text)
+    }
+    
+    func searchInputViewDidTapSearchKeyboardButton(_ inputView: SearchInputView) {
+        viewModel.executeSearch()
+    }
 }
+
